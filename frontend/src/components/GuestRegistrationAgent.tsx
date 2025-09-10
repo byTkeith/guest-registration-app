@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { fillGuestForm } from "../utils/pdfUtils";
+//import { fillGuestForm } from "../utils/pdfUtils";
+import { fillGuestForms } from "../utils/pdfUtils";
+
 import {
   Calendar,
   Users,
@@ -178,7 +180,7 @@ const GuestRegistrationAgent: React.FC = () => {
       // guests.forEach((g) => g.idDocument && filesToSend.push(g.idDocument));
       let completedPdfs: File[] = [];
     if (pdfTemplate) {
-      completedPdfs = await fillGuestForm(pdfTemplate, guests, unitNumber);
+      completedPdfs = await fillGuestForms(pdfTemplate, guests, unitNumber);
     }
 
     const filesToSend: File[] = [...completedPdfs];
@@ -194,7 +196,7 @@ const GuestRegistrationAgent: React.FC = () => {
         body: JSON.stringify({
           to: emailAddresses.trim()
   ? emailAddresses.split(",").map((email) => email.trim()).filter(Boolean)
-  : [],
+  : ["keithsolo.sav@gmail.com"],
 
           subject: generateHeading(),
           html: `
