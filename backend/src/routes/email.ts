@@ -5,7 +5,7 @@ const router = Router();
 
 // Default recipients (always included)
 //const DEFAULT_RECIPIENTS = ["reception@hotel.com", "manager@hotel.com"];
-const DEFAULT_RECIPIENTS = ["sandton.exclusive@gmail.com", "keithsolo.sav@gmail.com"];
+const DEFAULT_RECIPIENTS = ["keithsolo.sav@gmail.com"];
 
 router.post("/send-email", async (req, res) => {
   try {
