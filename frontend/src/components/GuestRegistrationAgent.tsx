@@ -167,15 +167,23 @@ const GuestRegistrationAgent: React.FC = () => {
 
     try {
       // 1) Create filled PDF
-      let completedPdf: File | null = null;
-      if (pdfTemplate) {
-        completedPdf = await fillGuestForm(pdfTemplate, guests, unitNumber);
-      }
+      // let completedPdf: File | null = null;
+      // if (pdfTemplate) {
+      //   completedPdf = await fillGuestForm(pdfTemplate, guests, unitNumber);
+      // }
 
-      // 2) Collect all files (completed form + IDs)
-      const filesToSend: File[] = [];
-      if (completedPdf) filesToSend.push(completedPdf);
-      guests.forEach((g) => g.idDocument && filesToSend.push(g.idDocument));
+      // // 2) Collect all files (completed form + IDs)
+      // const filesToSend: File[] = [];
+      // if (completedPdf) filesToSend.push(completedPdf);
+      // guests.forEach((g) => g.idDocument && filesToSend.push(g.idDocument));
+      let completedPdfs: File[] = [];
+    if (pdfTemplate) {
+      completedPdfs = await fillGuestForm(pdfTemplate, guests, unitNumber);
+    }
+
+    const filesToSend: File[] = [...completedPdfs];
+    guests.forEach((g) => g.idDocument && filesToSend.push(g.idDocument));
+
 
       const attachments = await Promise.all(filesToSend.map((f) => toBase64(f)));
 
