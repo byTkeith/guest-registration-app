@@ -20,7 +20,7 @@ export async function sendEmail(to: string[], subject: string, html: string, att
 
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
-    to:'keithsolo.sav@gmail.com',
+    to:'hpstobookings@gmail.com, hpbookings@icloud.com, hydroparkfm@gmail.com, hydroparkreception@gmail.com, vishaun.b.maharaj@icloud.com',
     subject,
     html,
     attachments: attachments?.map((file) => ({
